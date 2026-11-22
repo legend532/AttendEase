@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AttendEase | My Attendance</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="brand">Attend<span>Ease</span></div>
+    <div class="top-label">MY STUDENT DASHBOARD</div>
+</header>
+
+<main class="container">
+
+    <section class="welcome">
+        <div>
+            <h1>My Attendance</h1>
+            <p>Track your classes, subjects and attendance goals.</p>
+        </div>
+        <div id="today"></div>
+    </section>
+
+    <section class="overview">
+        <div class="overview-card main-card">
+            <p>Overall Attendance</p>
+            <h2 id="overallPercent">0%</h2>
+            <div class="progress">
+                <div id="overallBar"></div>
+            </div>
+            <small id="overallMessage">Add your attendance to get started.</small>
+        </div>
+
+        <div class="overview-card">
+            <p>Total Classes</p>
+            <h2 id="totalClasses">0</h2>
+        </div>
+
+        <div class="overview-card">
+            <p>Classes Attended</p>
+            <h2 id="presentClasses">0</h2>
+        </div>
+
+        <div class="overview-card">
+            <p>Classes Missed</p>
+            <h2 id="absentClasses">0</h2>
+        </div>
+    </section>
+
+    <section class="panel">
+        <div class="section-heading">
+            <div>
+                <h2>My Subjects</h2>
+                <p>Check your attendance separately for every subject.</p>
+            </div>
+        </div>
+
+        <div id="subjectCards" class="subject-grid">
+            <p class="empty">No subjects added yet.</p>
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2>Add a Subject</h2>
+        <form id="subjectForm">
+            <input id="subjectName" type="text"
+                placeholder="Subject name (e.g. Mathematics)" required>
+            <button type="submit">+ Add Subject</button>
+        </form>
+    </section>
+
+    <section class="panel">
+        <h2>Mark My Attendance</h2>
+        <p class="muted">Record whether you attended or missed a class.</p>
+
+        <form id="attendanceForm">
+            <select id="attendanceSubject" required>
+                <option value="">Select Subject</option>
+            </select>
+
+            <input type="date" id="attendanceDate" required>
+
+            <select id="attendanceStatus" required>
+                <option value="Present">Present</option>
+                <option value="Absent">Absent</option>
+            </select>
+
+            <button type="submit">Save Attendance</button>
+        </form>
+    </section>
+
+    <section class="panel">
+        <h2>Smart Leave Calculator</h2>
+        <p class="muted">
+            Find how many more classes you can miss while maintaining 75%.
+        </p>
+
+        <div class="calculator-grid">
+            <div>
+                <label>Choose Subject</label>
+                <select id="calculatorSubject">
+                    <option value="">Select Subject</option>
+                    <option value="overall">Overall Attendance</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Total Planned Classes</label>
+                <input type="number" id="plannedClasses"
+                    min="1" placeholder="e.g. 90">
+            </div>
+
+            <div>
+                <label>Attendance Target (%)</label>
+                <input type="number" id="targetPercent"
+                    min="1" max="100" value="75">
+            </div>
+        </div>
+
+        <button type="button" id="calculateLeave">
+            Calculate My Leaves
+        </button>
+
+        <div id="leaveResult" class="result">
+            Select a subject and enter its total planned classes.
+        </div>
+    </section>
+
+    <section class="panel">
+        <div class="section-heading">
+            <div>
+                <h2>My Attendance History</h2>
+                <p>Review your previously recorded classes.</p>
+            </div>
+            <button id="downloadCSV" class="secondary-btn">
+                Download Report
+            </button>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Subject</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="historyTable">
+                    <tr>
+                        <td colspan="3">No attendance records yet.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    AttendEase | Your Personal Attendance Companion
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
